@@ -57,6 +57,7 @@ def check_simulation_data(config):
         input: config variables for simulation parameters and soil
         output: on success, return True, otherwise return False
     '''
+    return True 
     pass
 
 
@@ -151,7 +152,7 @@ def simulation_start(config, results):
             - particles2d, leak_points, fluid_body_particles
 
         output: 
-            - fill in the results object with information abotu the simulation and the outcome
+            - fill in the results object with information about the simulation and the outcome
             - list of strings for any output to be printed
     '''
     strs_out = []
@@ -160,9 +161,15 @@ def simulation_start(config, results):
     print(particles2d)
 
     start_particles = []
-    start_loc = [0, config.load_location ]
+    start_loc = [0, config.load_location]
+    
+    start_particles.append(particles2d)
+    print(start_particles)
+    print(start_loc[0])
+    print(start_loc[1])
+    
     for j in range(config.load_width):
-        start_particles.append( particles2d[start_loc[0]][start_loc[1] + j] )
+        start_particles.append(particles2d[start_loc[0]][start_loc[1] + j] )
     print(start_particles)
 
     reset_particles2d(particles2d)

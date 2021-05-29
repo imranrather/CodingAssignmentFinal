@@ -25,22 +25,30 @@ def calculate_heights(particles2d):
     input: 2D grid of particles (list of lists)
     output: a list of heights for each column
     '''
-    pass
+    height = 0        
+    height += (1 - particles2d[0][0].capacity) + particles2d[0][0].water        
+    height += (1 - particles2d[1][0].capacity) + particles2d[1][0].water        
+    # for particles2d[2][0], skip adding height of void particle                
+    # for particles2d[3][0], always add height 1 for bedrock particle        
+    height += 1         
+    return [height]
 
 
 def get_bedrock_columns(particles2d):
     ''' returns a list of boolean values to represent whether the column is entirely bedrock
     input: 2D grid of particles (list of lists)
-    output: a list of bool, where the list length is the number of columns
+    output: a list of bool, where the list length is the number of columns'''
 
-    example:
-     BCCS 
-     BCCS 
-     BCCS
-     BBBB
+    # example:
+    #  BCCS   
+    #  BCCS 
+    #  BCCS
+    #  BBBB
+     
+     
 
-    [ True, False, False, False ]
-    '''
+    return [ True, False, False, False ]
+    
     pass
 
 

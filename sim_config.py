@@ -1,6 +1,6 @@
-# Name: 
-# SID:
-# unikey:
+# Name: Imran Rather 
+# SID: 510462233
+# unikey: irat3510
 
 '''
     sim_config.py
@@ -25,9 +25,9 @@ class sim_config:
         self.soil_width = 0
         self.soil_depth = 0
         self.soil_key_desc = []
-        self.soil_data = [ [] ] # 2D. row major. list of lists
+        self.soil_data = [] # 2D. row major. list of lists
 
-        # Soil compressibility. Water volume moved per 1kN per hour
+        # Soil compressibility. Water volume moved per 100kN per hour
         self.CLAY_COMPRESSIBILITY_RATE = 0.001
         self.SHALE_COMPRESSIBILITY_RATE = 0.0005
 
