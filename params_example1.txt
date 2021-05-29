@@ -1,0 +1,17 @@
+Load location
+1
+
+Load width
+1
+
+Load weight
+100
+
+Load type
+Constant
+
+Load timing
+100
+
+Load custom data
+1, 1, 2, 2, 3, 3, 4,4
