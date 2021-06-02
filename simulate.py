@@ -57,6 +57,7 @@ def check_simulation_data(config):
         input: config variables for simulation parameters and soil
         output: on success, return True, otherwise return False
     '''
+    return True 
     pass
 
 
@@ -151,23 +152,24 @@ def simulation_start(config, results):
             - particles2d, leak_points, fluid_body_particles
 
         output: 
-            - fill in the results object with information abotu the simulation and the outcome
+            - fill in the results object with information about the simulation and the outcome
             - list of strings for any output to be printed
     '''
     strs_out = []
 
     particles2d = create_2d_particle_array(config.soil_width, config.soil_depth, config.soil_data)
     print(particles2d)
-
+    
     start_particles = []
-    start_loc = [0, config.load_location ]
-    for j in range(config.load_width):
-        start_particles.append( particles2d[start_loc[0]][start_loc[1] + j] )
-    print(start_particles)
+    start_loc = [0, config.load_location]
 
+    for j in range(config.load_width):
+        start_particles.append(particles2d[start_loc[0]][start_loc[1] + j] )
+    print(start_particles)
+    
     reset_particles2d(particles2d)
     visualise_particles2d(particles2d)
-
+    
     load_connected_to_body = False
     found_water_body = False
     leak_points_ever_found = False
@@ -230,8 +232,49 @@ def simulation_start(config, results):
 
     visualise_particles2d(particles2d)
     print_heights(config.soil_depth, heights, 4,4)
+    print('--------------------------')
+    print('--------------------------')
+    print('--------------------------')
+    print('--------------------------')
+    print(particles2d)
+    #each element has properties of a 'particle' found in sim_particle 
+    print(particles2d[0])
+    print(particles2d[1])
+    print(particles2d[2])
+    print(particles2d[0][2])
+    print(particles2d[1][2])
+    print(particles2d[2][2])
+    print(particles2d[0][0].type)
+    print(particles2d[1][0].type)
+    print(particles2d[2][0].type)
+    print(range(config.soil_depth))
+    print(range(config.soil_width))
+    print('--------------------------')
+    print('--------------------------')
+    print('--------------------------')
+    print('--------------------------')
+    
+    print(particles2d[0][1].passes)
 
-    # return 
+    print('--------------------------')
+    print('--------------------------')
+    print('--------------------------')
+    print('--------------------------')
+    
+    column=[]
+    bedrock=[]
+    for col in range (config.soil_depth):
+        for row in range (config.soil_width):
+            column.append(particles2d[col][row].type)
+    for row in range(config.soil_width):
+        print(column[row: :config.soil_width])
+        if column[row: : config.soil_width].count("B") == config.soil_depth:
+            bedrock.append(True)
+        else: 
+            bedrock.append(False)
+    return [bedrock]
+    
+    
     return strs_out
 
 def setup_config(sim_param_file, soil_data_file, output_file):

@@ -1,7 +1,7 @@
 # Name: 
 # SID:
 # unikey:
-
+from sim_config import sim_config as config
 from sim_particle import *
 
 ''' 
@@ -25,23 +25,33 @@ def calculate_heights(particles2d):
     input: 2D grid of particles (list of lists)
     output: a list of heights for each column
     '''
-    pass
+    
+    return [heights]
+
 
 
 def get_bedrock_columns(particles2d):
     ''' returns a list of boolean values to represent whether the column is entirely bedrock
     input: 2D grid of particles (list of lists)
-    output: a list of bool, where the list length is the number of columns
+    output: a list of bool, where the list length is the number of columns'''
+    
+    column=[]
+    bedrock=[]
+    for col in range (3):
+        for row in range (3):
+            column.append(particles2d[col][row].type)
+            
+            
+    for row in range(3):
+        #print(column[row: :config.soil_width])
+        if column[row: : 3].count("B") == 3:
+            bedrock.append(True)
+        else: 
+            bedrock.append(False)
+            
+        
+    return bedrock
 
-    example:
-     BCCS 
-     BCCS 
-     BCCS
-     BBBB
-
-    [ True, False, False, False ]
-    '''
-    pass
 
 
 def create_2d_particle_array(soil_width, soil_depth, soil_data):
@@ -153,6 +163,7 @@ def visualise_particles2d_water(particles2d):
 def print_heights(max_height, heights, chars_for_1h, chars_for_1w, guide=False):
     ''' Given '''
     print("Heights: ")
+    print()
     maxh = int(max_height * chars_for_1h)
 
     # create empty data

@@ -1,0 +1,4 @@
+sim_param: .\tests\basic_params.in
+soil_data: .\tests\basic_soil.in
+Consolidation time: <bound method sim_results.get_consolidation_time of <sim_results.sim_results object at 0x000001FB4E7E6AF0>>
+Total water removed: 0
